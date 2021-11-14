@@ -1,0 +1,25 @@
+{% extends 'base.html'%}
+
+{%block content%}
+{%csrf_token%}
+
+<h1><b>All Book Lists:</b></h1><br><br>
+<body style="background-color: rgba(148, 168, 36, 0.815);"></body>
+
+<table border="2" cellspacing="5" cellpadding="6">
+{%for item in st%}
+
+<tr>
+    <th>Book Name: {{item.title}}</th>
+    <th>Price: {{item.cost}}</th>
+    <th><img src="{{item.file.url}}" height="100" width="100"/></th>
+    <th><a href="/delete_Order/{{item.pk}}">Delete</a></th>
+    <th><a href="{%url 'Add_Book'%}">Add Book</a></th>
+    <th><a href="{%url 'update_book' item.pk%}">Update</a></th>
+    
+</tr>
+
+{%endfor%}
+</table>
+
+{%endblock%}
